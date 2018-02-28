@@ -21,8 +21,8 @@ export default class AnotherWebPartWebPart extends BaseClientSideWebPart<IAnothe
   private counterService: ICounterService;
   protected onInit(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
-      this.context.serviceScope.getParent().getParent().whenFinished(() => {
-        this.counterService = this.context.serviceScope.getParent().getParent().consume(CounterServieKey);
+      this.context.serviceScope.whenFinished(() => {
+        this.counterService = this.context.serviceScope.consume(CounterServieKey);
         resolve();
       });
     });
