@@ -20,7 +20,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
   protected onInit(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       this.context.serviceScope.whenFinished(() => {
-        this.counterService = this.context.serviceScope.consume(CounterServieKey);
+        this.counterService = this.context.serviceScope.consume(CounterServieKey(this.context.serviceScope));
         resolve();
       });
     });
@@ -38,7 +38,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
           </div>
         </div>
       </div>`;
-    }
+  }
 
   protected get dataVersion(): Version {
     return Version.parse('1.0');

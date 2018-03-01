@@ -22,7 +22,7 @@ export default class AnotherWebPartWebPart extends BaseClientSideWebPart<IAnothe
   protected onInit(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       this.context.serviceScope.whenFinished(() => {
-        this.counterService = this.context.serviceScope.consume(CounterServieKey);
+        this.counterService = this.context.serviceScope.consume(CounterServieKey(this.context.serviceScope));
         resolve();
       });
     });
